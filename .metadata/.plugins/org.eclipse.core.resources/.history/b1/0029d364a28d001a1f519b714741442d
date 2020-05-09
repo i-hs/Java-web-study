@@ -1,0 +1,5 @@
+package chap14;
+
+public abstract class Plane2D {
+	int getArea();  // 면적을 구한다.
+}

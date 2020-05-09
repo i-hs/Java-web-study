@@ -1,0 +1,11 @@
+package chap15;
+
+public class CompareToTest {
+
+	public static void main(String[] args) {
+		String a = "ABC";
+		String b = "DEF";
+		System.out.printl(a.compareTo(b));
+	}
+
+}
