@@ -2,6 +2,8 @@ package sec01.ex01;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -27,14 +29,14 @@ public class MemberServlet extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		System.out.println("init 메서드 호출 ");
 	}
 
 	/**
 	 * @see Servlet#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+		System.out.println("destroy메서드 호출 ");
 	}
 
 	/**
@@ -56,10 +58,10 @@ public class MemberServlet extends HttpServlet {
 			String id= memberVO.getId();
 			String pwd= memberVO.getPwd();
 			String name= memberVO.getName();
-			String email= memberVO.getJoinDate();
-			Date joinDate = memberVO.getDate("joinDate");
+			String email= memberVO.getEmail();
+			Date joinDate = memberVO.getJoinDate();
 			out.print("<tr><td>"+id+"</td><td>"+pwd+"</td><td>"+name+"</td><td>"+email+
-					"</td><td>"+joinDate+"</td><td>");
+					"</td><td>"+joinDate+"</td>");
 		}
 		out.print("</table></body></html>");
 	}

@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="getPur"/>
+		<item key="selection" value="command"/>
 		<list key="findhistory">
+			<item value="command"/>
+			<item value="addmember"/>
 			<item value="getpur"/>
 			<item value="getpurchase`"/>
 			<item value="getpurchase"/>
@@ -23,5 +25,9 @@
 		<item key="DIALOG_WIDTH" value="294"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="454"/>
+		<item key="DIALOG_Y_ORIGIN" value="328"/>
 	</section>
 </section>
