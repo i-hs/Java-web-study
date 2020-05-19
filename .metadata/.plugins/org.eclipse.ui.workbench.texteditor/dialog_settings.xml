@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Session"/>
+		<item key="selection" value="Manager"/>
 		<list key="findhistory">
+			<item value="manager"/>
 			<item value="session"/>
 			<item value="command"/>
 			<item value="addmember"/>

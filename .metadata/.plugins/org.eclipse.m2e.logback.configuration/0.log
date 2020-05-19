@@ -57,3 +57,6 @@
 2020-05-17 14:24:27,221 [Worker-96: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-websocket/9.0.34/tomcat-websocket-9.0.34-sources.jar
 2020-05-17 14:25:45,291 [Worker-85: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-dbcp/9.0.34/tomcat-dbcp-9.0.34-sources.jar
 2020-05-17 14:25:46,060 [Worker-85: Debug Source Lookup] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-dbcp/9.0.34/tomcat-dbcp-9.0.34-sources.jar
+2020-05-18 14:06:52,964 [Worker-12: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-05-18 14:06:53,145 [Worker-12: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Updating Gradle version information cache failed. Using outdated cache.
+2020-05-19 10:48:42,512 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
