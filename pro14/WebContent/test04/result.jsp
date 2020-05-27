@@ -18,6 +18,6 @@
 	</c:if>
 	<c:if test="${not empty param.userID }">
 	<h1>환영합니다. <c:out value="${param.userID }" />님!!!</h1>
-	
+	</c:if>
 </body>
 </html>

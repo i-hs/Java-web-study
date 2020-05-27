@@ -12,9 +12,9 @@
 <title>로그인창</title>
 </head>
 <body>
-	<form method="post" action="result.jsp">
-		아이디   : <input type="text" size=20 /> <br>
-		비밀번호 : <input type="password" size=20 /><br>
+	<form method="post" action="result2.jsp">
+		아이디   : <input type="text" size=20 name="userID"/> <br>
+		비밀번호 : <input type="password" size=20 name="userPwd"/><br>
 		<input type="submit" value="로그인" /> <input type="reset" value="다시입력" /> 
 	</form>
 	<br><br>
