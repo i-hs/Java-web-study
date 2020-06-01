@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Manager"/>
+		<item key="selection" value="ajaxTest"/>
 		<list key="findhistory">
+			<item value="ajaxtest"/>
+			<item value="ajax"/>
+			<item value="duke"/>
 			<item value="manager"/>
 			<item value="session"/>
 			<item value="command"/>
