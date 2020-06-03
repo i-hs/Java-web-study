@@ -1,11 +1,9 @@
 INDEX VERSION 1.131+/Users/ihyeonseung/lab-java/.metadata/.plugins/org.eclipse.jdt.core
 3791493556.index
-2995613601.index
 427979900.index
 1647549471.index
 1171944481.index
 3661330864.index
-4282906646.index
 3644971698.index
 330166437.index
 2432464419.index
@@ -19,7 +17,6 @@ INDEX VERSION 1.131+/Users/ihyeonseung/lab-java/.metadata/.plugins/org.eclipse.j
 3178925226.index
 2125324414.index
 860208533.index
-3257389478.index
 749449711.index
 3486143319.index
 3322627359.index
@@ -49,24 +46,20 @@ INDEX VERSION 1.131+/Users/ihyeonseung/lab-java/.metadata/.plugins/org.eclipse.j
 3184274632.index
 3208709838.index
 2809149236.index
-1298605062.index
 1939242173.index
 3177336931.index
 91384069.index
 3769921894.index
 2716003394.index
 4221563530.index
-1879510454.index
 4165288612.index
-812509399.index
 853361847.index
+812509399.index
 832635161.index
-180838102.index
 2240260982.index
 1498593670.index
 3627409856.index
 1301980331.index
-3102180038.index
 3155471486.index
 3038339850.index
 687117196.index
