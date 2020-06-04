@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ajaxTest"/>
+		<item key="selection" value="addArticle"/>
 		<list key="findhistory">
+			<item value="addarticle"/>
+			<item value="board01"/>
+			<item value="articleNum"/>
 			<item value="ajaxtest"/>
 			<item value="ajax"/>
 			<item value="duke"/>
@@ -22,11 +25,12 @@
 			<item value="week"/>
 		</list>
 		<list key="replacehistory">
+			<item value="board02"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="573"/>
-		<item key="DIALOG_Y_ORIGIN" value="178"/>
+		<item key="DIALOG_X_ORIGIN" value="1070"/>
+		<item key="DIALOG_Y_ORIGIN" value="298"/>
 		<item key="DIALOG_WIDTH" value="294"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>

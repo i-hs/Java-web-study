@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
 /**
  * Servlet implementation class MemberController
  */
-@WebServlet("/board/*")
+//@WebServlet("/board/*")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BoardService boardService;
