@@ -1,4 +1,4 @@
-package sec03.brd04;
+package sec03.brd05;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.json.simple.JSONObject;
 /**
  * Servlet implementation class MemberController
  */
-//@WebServlet("/board/*")
+@WebServlet("/board/*")
 public class BoardController extends HttpServlet {
 	public static String ARTICLE_IMAGE_REPO = "/Users/ihyeonseung/Downloads";
 	BoardService boardService;
@@ -105,6 +105,47 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("article", articleVO);
 				nextPage = "/board03/viewArticle.jsp";
 				
+			}else if(action.contentEquals("/modArticle.do")) {
+				Map<String, String> articleMap = upload(request, response);
+				int articleNO = Integer.parseInt(articleMap.get("articleNO"));
+				articleVO.setArticleNO(articleNO);
+				
+				String title = articleMap.get("title");
+				String content = articleMap.get("content");
+				String imageFileName = articleMap.get("imageFileName");
+				
+				articleVO.setParentNO(0);
+				articleVO.setId("hong");
+				articleVO.setTitle(title);
+				articleVO.setContent(content);
+				articleVO.setImageFileName(imageFileName);
+
+				boardService.modArticle(articleVO);
+							
+				if(imageFileName != null && imageFileName.length() != 0)
+				{
+					String originalFileName = articleMap.get("originalFileName");
+					File tempPath = new File(ARTICLE_IMAGE_REPO+"/"+"temp");
+					tempPath.mkdirs();  // temp folder 경로가 없으면 생성
+					
+					File srcFile = new File(ARTICLE_IMAGE_REPO+"/"+"temp"+"/"+imageFileName);
+					File destDir = new File(ARTICLE_IMAGE_REPO+"/"+articleNO);
+					destDir.mkdirs();
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					
+					File oldFile = new File(ARTICLE_IMAGE_REPO + "/" + articleNO + "/" 
+							+ originalFileName);
+					oldFile.delete();
+				}
+				PrintWriter pw = response.getWriter();
+				pw.print("<script>" + " alert('새 글을 수정했습니다.');"
+						+ " location.href='" + request.getContextPath() 
+						+ "/board/viewArticle.do?articleNO="
+						+ articleNO + "';"
+						+"</script>"
+						);
+				return;
+			
 			}else
 			{
 				articlesList = boardService.listArticles();

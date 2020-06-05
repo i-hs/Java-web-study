@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="upload"/>
+		<item key="selection" value="listArticle"/>
 		<list key="findhistory">
+			<item value="listArticle"/>
+			<item value="listArticles"/>
+			<item value="board02"/>
 			<item value="upload"/>
 			<item value="addarticle"/>
 			<item value="board01"/>
@@ -20,11 +23,9 @@
 			<item value="command"/>
 			<item value="addmember"/>
 			<item value="getpur"/>
-			<item value="getpurchase`"/>
-			<item value="getpurchase"/>
-			<item value="get"/>
 		</list>
 		<list key="replacehistory">
+			<item value="board03"/>
 			<item value="board02"/>
 		</list>
 	</section>
