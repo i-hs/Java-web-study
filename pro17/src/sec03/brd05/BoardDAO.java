@@ -186,9 +186,11 @@ public class BoardDAO {
 			con = dataFactory.getConnection();
 			String query = "update t_board set title=?, content=?";
 			
+			
 			if(imageFileName != null && imageFileName.length() != 0)
 			{
 				query += ", imageFileName =?";
+				query += " where articleNO = ?";
 			}else {
 				query += " where articleNO = ?";
 			}
@@ -197,7 +199,7 @@ public class BoardDAO {
 			System.out.println(query);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,  title);			
-			pstmt.setString(1,  content);
+			pstmt.setString(2,  content);
 			
 			if(imageFileName != null && imageFileName.length() != 0)
 			{

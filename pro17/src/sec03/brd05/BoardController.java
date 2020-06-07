@@ -62,15 +62,15 @@ public class BoardController extends HttpServlet {
 			if(action == null) {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board03/listArticles.jsp";
+				nextPage = "/board04/listArticles.jsp";
 			}else if (action.contentEquals("/listArticles.do"))
 			{
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board03/listArticles.jsp";
+				nextPage = "/board04/listArticles.jsp";
 			}else if (action.contentEquals("/articleForm.do"))
 			{
-				nextPage = "/board03/articleForm.jsp";
+				nextPage = "/board04/articleForm.jsp";
 			}else if (action.contentEquals("/addArticle.do"))
 			{	
 				int articleNO = 0;
@@ -103,7 +103,7 @@ public class BoardController extends HttpServlet {
 				String articleNO = request.getParameter("articleNO");
 				articleVO = boardService.viewArticle(Integer.parseInt(articleNO));
 				request.setAttribute("article", articleVO);
-				nextPage = "/board03/viewArticle.jsp";
+				nextPage = "/board04/viewArticle.jsp";
 				
 			}else if(action.contentEquals("/modArticle.do")) {
 				Map<String, String> articleMap = upload(request, response);
@@ -112,14 +112,18 @@ public class BoardController extends HttpServlet {
 				
 				String title = articleMap.get("title");
 				String content = articleMap.get("content");
-				String imageFileName = articleMap.get("imageFileName");
 				
 				articleVO.setParentNO(0);
 				articleVO.setId("hong");
 				articleVO.setTitle(title);
 				articleVO.setContent(content);
+				
+				String imageFileName = articleMap.get("imageFileName");
+				if (imageFileName != null)
+				{
 				articleVO.setImageFileName(imageFileName);
-
+				}
+				
 				boardService.modArticle(articleVO);
 							
 				if(imageFileName != null && imageFileName.length() != 0)
@@ -150,7 +154,7 @@ public class BoardController extends HttpServlet {
 			{
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board03/listArticles.jsp";
+				nextPage = "/board04/listArticles.jsp";
 			}
 			
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

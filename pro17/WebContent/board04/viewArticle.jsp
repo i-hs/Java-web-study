@@ -20,10 +20,48 @@
 	    obj.action="${contextPath}/board/listArticles.do";
 	    obj.submit();
 	  }
+      function fn_enable(obj){
+      	document.getElementById("i_title").disabled = false;
+      	document.getElementById("i_content").disabled = false;
+      	document.getElementById("i_imageFileName").disabled = false;
+      	document.getElementById("tr_btn_modify").style.display ="block";
+      	document.getElementById("tr_btn").style.display = "none";
+      }
+      
+      function fn_modify_article(obj){
+    	  obj.action = "${contextPath}/board/modArticle.do";
+    	  obj.submit();
+      }
+      
+      function fn_remove_article(url, articleNO){
+    	  var form = document.createElement("form");
+    	  form.setAttribute("method", "post");
+    	  form.setAttribute("action", url);
+    	  var articleNOInput = document.createElement("input");
+    	  articleNOInput.setAttribute("type", "hidden");
+    	  articleNOInput.setAttribute("name", "articleNO");
+    	  articleNOInput.setAttribute("value", articleNO);
+    	  
+    	  form.appendChild(articleNOInput);
+    	  document.body.appendChild(form);
+    	  form.submit();
+      }
+      
+      function readURL(input){
+    	  if ( input.files && input.files[0]){
+    		  var reader = new FileReader();
+    		  reader.onload = function(e) {
+    			  $('#preview').attr('src', e.target.result);
+    		  }
+    		  reader.readAsDataURL(input.files[0]);
+    	  }
+      }
    </script>
 </head>
 <body>
 	<form name="frmArticle" method="post"   enctype="multipart/form-data">
+	<h2>member.id: ${ member.id}</h2><br>
+	<h2>article.id: ${ article.id}</h2><br>
   	<table  border="0" align="center" >	
 		<tr>
 		<td width="150" align="center" bgcolor="#FF9933" > 
@@ -61,7 +99,7 @@
 		   
 		   <c:if test="${not empty article.imageFileName && article.imageFileName != 'null' }">
 		   <tr>
-		   	<td width="20%" align="center" bgcolor="#FF9933" >
+		   	<td width="20%" align="center" bgcolor="#FF9933" rowspan="2">
 		   	   이미지
 		   	</td>
 		   	<td>
@@ -70,6 +108,12 @@
 		   	 id="preview" /> <br>
 			
 			</td>
+			</tr>
+			<tr>
+			 <td>
+			  <input type="file" name="imageFileName" id="i_imageFileName"
+			  	disabled onchange="readURL(this);" />
+			 </td>
 			</tr>
 		</c:if>
 		
@@ -81,15 +125,21 @@
 		   <input type="text" value="<fmt:formatDate value='${article.writeDate}'/>" disabled />
 		  </td>
 		</tr>
-		<tr id="tr_btn_modify" >
+		<tr id = "tr_btn_modify">
+			<td colspan="2" align="center">
+				<input type=button value="수정반영하기" onClick="fn_modify_article(frmArticle)">
+				<input type=button value="취소" onClick="backToList(frmArticle)">
+			</td>
+		</tr>
+		
+		<tr id="tr_btn" >
 		  <td colspan="2" align="center" >
-		  
-	   	    <c:if test="${member.id == article.id }" >
+	   	    <%-- <c:if test="${member.id == article.id }" > --%>
 	   	      <input type="button" value="수정하기" onClick="fn_enable(this.form)">
 	   	      <input type="button" value="삭제하기" onClick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.articleNO })">
 	   	      <input type="button" value="리스트로 돌아가기" onClick="backToList(this.form)" >
 	   	      <input type="button" value="답글쓰기" onClick="fn_reply_form('${contextPath }/board/replyForm.do', ${article.articleNO })"> 
-			</c:if>
+			<%-- </c:if> --%>
 		  </td>
 		</tr>
 	</table>
