@@ -1,4 +1,4 @@
-package sec03.brd06;
+package sec03.brd07;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -25,7 +26,7 @@ import org.json.simple.JSONObject;
 /**
  * Servlet implementation class MemberController
  */
-//@WebServlet("/board/*")
+@WebServlet("/board/*")
 public class BoardController extends HttpServlet {
 	public static String ARTICLE_IMAGE_REPO = "/Users/ihyeonseung/Downloads";
 	BoardService boardService;
@@ -55,6 +56,7 @@ public class BoardController extends HttpServlet {
 		String nextPage = "";
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		HttpSession session;
 		String action = request.getPathInfo();
 		System.out.println("action: "+action);
 		try {
@@ -62,15 +64,15 @@ public class BoardController extends HttpServlet {
 			if(action == null) {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board05/listArticles.jsp";
+				nextPage = "/board06/listArticles.jsp";
 			}else if (action.contentEquals("/listArticles.do"))
 			{
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board05/listArticles.jsp";
+				nextPage = "/board06/listArticles.jsp";
 			}else if (action.contentEquals("/articleForm.do"))
 			{
-				nextPage = "/board05/articleForm.jsp";
+				nextPage = "/board06/articleForm.jsp";
 			}else if (action.contentEquals("/addArticle.do"))
 			{	
 				int articleNO = 0;
@@ -106,7 +108,7 @@ public class BoardController extends HttpServlet {
 				String articleNO = request.getParameter("articleNO");
 				articleVO = boardService.viewArticle(Integer.parseInt(articleNO));
 				request.setAttribute("article", articleVO);
-				nextPage = "/board05/viewArticle.jsp";
+				nextPage = "/board06/viewArticle.jsp";
 				
 			}else if(action.contentEquals("/modArticle.do")) {
 				Map<String, String> articleMap = upload(request, response);
@@ -172,11 +174,54 @@ public class BoardController extends HttpServlet {
 							);
 					return;
 				}
+			}else if (action.contentEquals("/replyForm.do"))
+			{	
+				System.out.println("request.getParameter(\"parentNO\"):"+request.getParameter("parentNO"));
+				int parentNO = Integer.parseInt(request.getParameter("parentNO"));
+				session = request.getSession();
+				session.setAttribute("parentNO", parentNO);
+				nextPage = "/board06/replyForm.jsp";
+				
+			}else if(action.contentEquals("/addReply.do")) 
+			{	
+				session = request.getSession();
+				int parentNO = (Integer) session.getAttribute("parentNO");
+				session.removeAttribute("parentNO");
+
+				Map<String, String> articleMap = upload(request, response);
+				String title = articleMap.get("title");
+				String content = articleMap.get("content");
+				String imageFileName = articleMap.get("imageFileName");
+				
+				articleVO.setParentNO(parentNO);
+				articleVO.setId("lee");
+				articleVO.setTitle(title);
+				articleVO.setContent(content);
+				if(imageFileName != null && imageFileName.length() != 0)
+				{
+				articleVO.setImageFileName(imageFileName);
+				}
+				int articleNO = boardService.addReply(articleVO);
+				
+				if(imageFileName != null && imageFileName.length() != 0)
+				{
+					File srcFile = new File(ARTICLE_IMAGE_REPO+"/"+"temp"+"/"+imageFileName);
+					File destDir = new File(ARTICLE_IMAGE_REPO+"/"+articleNO);
+					destDir.mkdirs();
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+				}
+				PrintWriter pw = response.getWriter();
+				pw.print("<script>" + " alert('답글을 추가했습니다.');"
+						+ " location.href='" + request.getContextPath() 
+						+"/board/viewArticles.do?articleNO="+ articleNO 
+						+"';" + "</script>"
+						);
+				return;
 			}else
 			{
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board05/listArticles.jsp";
+				nextPage = "/board06/listArticles.jsp";
 			}
 			
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
