@@ -6,8 +6,16 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="listArticle"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="URL"/>
+			<item value="urlEncoder&apos;"/>
+			<item value="urlEncoder"/>
+			<item value="url"/>
+			<item value="title="/>
+			<item value="frmArticle"/>
+			<item value="board03"/>
+			<item value="board04"/>
 			<item value="listArticle"/>
 			<item value="listArticles"/>
 			<item value="board02"/>
@@ -15,16 +23,9 @@
 			<item value="addarticle"/>
 			<item value="board01"/>
 			<item value="articleNum"/>
-			<item value="ajaxtest"/>
-			<item value="ajax"/>
-			<item value="duke"/>
-			<item value="manager"/>
-			<item value="session"/>
-			<item value="command"/>
-			<item value="addmember"/>
-			<item value="getpur"/>
 		</list>
 		<list key="replacehistory">
+			<item value="board04"/>
 			<item value="board03"/>
 			<item value="board02"/>
 		</list>
