@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="board07"/>
 		<list key="findhistory">
+			<item value="board06"/>
+			<item value="articleNum"/>
+			<item value="parentNO"/>
+			<item value="board05"/>
+			<item value="board04"/>
 			<item value="URL"/>
 			<item value="urlEncoder&apos;"/>
 			<item value="urlEncoder"/>
@@ -15,24 +20,23 @@
 			<item value="title="/>
 			<item value="frmArticle"/>
 			<item value="board03"/>
-			<item value="board04"/>
 			<item value="listArticle"/>
 			<item value="listArticles"/>
 			<item value="board02"/>
-			<item value="upload"/>
-			<item value="addarticle"/>
-			<item value="board01"/>
-			<item value="articleNum"/>
 		</list>
 		<list key="replacehistory">
+			<item value="board07"/>
+			<item value="board06"/>
+			<item value="board05"/>
+			<item value="board"/>
 			<item value="board04"/>
 			<item value="board03"/>
 			<item value="board02"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1025"/>
-		<item key="DIALOG_Y_ORIGIN" value="241"/>
+		<item key="DIALOG_X_ORIGIN" value="953"/>
+		<item key="DIALOG_Y_ORIGIN" value="219"/>
 		<item key="DIALOG_WIDTH" value="294"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>

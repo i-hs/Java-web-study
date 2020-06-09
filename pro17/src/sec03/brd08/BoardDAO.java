@@ -1,4 +1,4 @@
-package sec03.brd07;
+package sec03.brd08;
 
 //import java.sql.*;
 import java.sql.Connection;
@@ -7,7 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -36,40 +38,49 @@ public class BoardDAO {
 		}
 	}
 	
-	public List<ArticleVO> selectAllArticles(){
-		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();		
+	public List<ArticleVO> selectAllArticles(Map<String, Integer> pagingMap){
+		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
+		int section = (Integer) pagingMap.get("section");
+		int pageNum = (Integer) pagingMap.get("pageNum");
+		
+		
 		try {
-//			connDB();
 			con= dataFactory.getConnection();
-			String query = "SELECT LEVEL, " + 
-					"articleNO, " + 
-					"parentNO, " + 
-					"LPAD(' ', 4*(LEVEL-1)) || title title, " + 
-					"content, " + 
-					"writeDate, " + 
-					"id " + 
-					"from t_board " + 
-					"start with parentNO=0 " + 
-					"connect by prior articleNO = parentNO " + 
-					"order siblings by articleNO asc";
+			String query = "SELECT * FROM (" 
+			+ "select ROWNUM as recNum, "+ "  LVL, " 
+			+ "articleNO, " 
+			+ "parentNO, " + "title, "
+			+ " id, " + " writeDate " 
+			+ " from (select LEVEL as LVL, "
+			+ " articleNO, " + "parentNO, " + "title, " +"id,"
+			+ "  writeDate " + "  from t_board"
+			+ "  START WITH parentNO=0 " + "CONNECT BY PRIOR articleNO = parentNO "
+			+ "  ORDER SIBLINGS BY articleNO DESC)" + ") "
+			+ " where recNum between ((?-1)*100+(?-1)*10+1) and ((?-1)*100+?*10)";
+
+			
 			
 			System.out.println(query);
 			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,  section);
+			pstmt.setInt(2,  pageNum);
+			pstmt.setInt(3,  section);
+			pstmt.setInt(4,  pageNum);
 			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
-				int level = rs.getInt("level");
+				int level = rs.getInt("lvl");
 				int articleNO = rs.getInt("articleNO");
 				int parentNO = rs.getInt("parentNO");
 				String title = rs.getString("title");
-				String content = rs.getString("content");
 				String id = rs.getString("id");
 				Date writeDate = rs.getDate("writeDate");
 				ArticleVO article = new ArticleVO();
+				
 				article.setLevel(level);
 				article.setArticleNO(articleNO);
 				article.setParentNO(parentNO);
 				article.setTitle(title);
-				article.setContent(content);
 				article.setId(id);
 				article.setWriteDate(writeDate);
 				articlesList.add(article);
@@ -77,6 +88,7 @@ public class BoardDAO {
 			rs.close();
 			pstmt.close();
 			con.close();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -266,4 +278,26 @@ public class BoardDAO {
 		}
 		return articleNOList;
 	}
+	
+	public int selectTotArticles()
+	{
+		try
+		{
+			con = dataFactory.getConnection();
+			String query = "select count(articleNO) from t_board " ;
+			System.out.println("query");
+			pstmt = con.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next())
+					return (rs.getInt(1));
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		} return 0;
+	}
+	
+	
 }
