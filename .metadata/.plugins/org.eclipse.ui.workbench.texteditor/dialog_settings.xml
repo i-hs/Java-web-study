@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="board07"/>
+		<item key="selection" value="cls"/>
 		<list key="findhistory">
+			<item value="cls"/>
 			<item value="board06"/>
 			<item value="articleNum"/>
 			<item value="parentNO"/>
@@ -22,7 +23,6 @@
 			<item value="board03"/>
 			<item value="listArticle"/>
 			<item value="listArticles"/>
-			<item value="board02"/>
 		</list>
 		<list key="replacehistory">
 			<item value="board07"/>
