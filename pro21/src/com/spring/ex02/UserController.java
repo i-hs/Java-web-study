@@ -18,7 +18,25 @@ public class UserController extends MultiActionController
 		userPwd = request.getParameter("userPwd");
 		mav.addObject("userID", userID);
 		mav.addObject("userPwd", userPwd);
-		mav.setViewName("result");
+		mav.setViewName("result");  // 포워딩할 jsp 이름
 		return mav;
 	}
+	
+	public ModelAndView memberInfo(HttpServletRequest request, 
+			HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		ModelAndView mav = new ModelAndView();
+		String id=request.getParameter("id");
+		String pwd=request.getParameter("pwd");
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		mav.addObject("id", id);
+		mav.addObject("pwd", pwd);
+		mav.addObject("name", name);
+		mav.addObject("email", email);
+		mav.setViewName("memberInfo");  // 포워딩할 jsp 이름 
+		return mav;
+		
+	}
+
 }
