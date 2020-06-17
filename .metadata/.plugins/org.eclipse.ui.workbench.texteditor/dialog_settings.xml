@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="mem"/>
 		<list key="findhistory">
+			<item value="mem"/>
 			<item value="memberDAO"/>
 			<item value="memberControl"/>
 			<item value="action"/>
@@ -22,7 +23,6 @@
 			<item value="urlEncoder&apos;"/>
 			<item value="urlEncoder"/>
 			<item value="url"/>
-			<item value="title="/>
 		</list>
 		<list key="replacehistory">
 			<item value="board07"/>
